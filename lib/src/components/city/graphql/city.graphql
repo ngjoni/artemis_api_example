@@ -1,0 +1,22 @@
+query getAllCities {
+  cities {
+    id
+    created_at
+    updated_at
+    name
+    coordinates {
+      latitude
+      longitude
+    }
+    description
+    country
+    locale
+    places {
+      id
+      isCompany
+    }
+    images {
+      formats
+    }
+  }
+}

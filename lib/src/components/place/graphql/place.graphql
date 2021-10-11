@@ -1,0 +1,129 @@
+query getAllPlaces {
+  places {
+    id
+    name
+    short_description
+    description
+    isSightseeing
+    isCompany
+    categories {
+      name
+    }
+    coordinates {
+      longitude
+      latitude
+    }
+    images {
+      formats
+    }
+    events {
+      id
+      created_at
+      updated_at
+      title
+      description
+      startTime
+      endTime
+      images {
+        formats
+      }
+    }
+  }
+}
+
+query getOnePlace($id: ID!) {
+  place(id: $id) {
+    id
+    name
+    short_description
+    description
+    isSightseeing
+    isCompany
+    categories {
+      name
+    }
+    coordinates {
+      longitude
+      latitude
+    }
+    images {
+      formats
+    }
+    events {
+      id
+      created_at
+      updated_at
+      title
+      description
+      startTime
+      endTime
+      images {
+        formats
+      }
+    }
+  }
+}
+
+query getSightSeeingPlace() {
+  places(where: { isSightseeing: "true" }) {
+    created_at
+    name
+    description
+    isCompany
+    isSightseeing
+  }
+}
+
+query getCompanyPlace() {
+  places(where: { isCompany: "true" }) {
+    created_at
+    name
+    description
+    isCompany
+    isSightseeing
+  }
+}
+
+mutation addPlace($input: createPlaceInput) {
+  createPlace(input: $input) {
+    place {
+      id
+      name
+      description
+    }
+  }
+}
+
+mutation updatePlace($input: updatePlaceInput) {
+  updatePlace(input: $input) {
+    place {
+      name
+      description
+    }
+  }
+}
+
+mutation deletePlace($input: deletePlaceInput) {
+  deletePlace(input: $input) {
+    place {
+      id
+    }
+  }
+}
+
+query getEventsFromOnePlace($id: ID!) {
+  place(id: $id) {
+    events {
+      id
+      created_at
+      updated_at
+      title
+      description
+      startTime
+      endTime
+      images {
+        formats
+      }
+    }
+  }
+}

@@ -1,0 +1,32 @@
+fragment NestedFragment on places {
+  categories {
+    name
+  }
+  coordinates {
+    longitude
+    latitude
+  }
+  images {
+    formats
+  }
+}
+
+fragment Event on places {
+  events {
+    id
+    created_at
+    updated_at
+    title
+    description
+    startTime
+    endTime
+    images {
+      formats
+    }
+  }
+}
+
+fragment PlaceFragment on places {
+  ...NestedFragment
+  ...Event
+}

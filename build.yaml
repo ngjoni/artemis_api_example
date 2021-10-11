@@ -1,0 +1,31 @@
+targets:
+  $default:
+    sources:
+      - lib/**
+      - lib/src/graphql/**
+      - schema.graphql
+    builders:
+      source_gen|combining_builder:
+        options:
+          ignore_for_file:
+            - implicit_dynamic_parameter
+      artemis:
+        options:
+          generate_helpers: true
+          schema_mapping:
+            - schema: schema.graphql
+              queries_glob: lib/**.graphql
+              output: lib/src/graphql/graphql_api.dart
+          scalar_mapping:
+            - graphql_type: JSON
+              dart_type: Object
+            - graphql_type: DateTime
+              dart_type: DateTime
+            - graphql_type: Time
+              dart_type: String
+            - graphql_type: Date
+              dart_type: Date
+            - graphql_type: Long
+              dart_type: int
+            - graphql_type: Upload
+              dart_type: Object

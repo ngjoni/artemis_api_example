@@ -1,0 +1,36 @@
+query getAllEvents {
+  events {
+    id
+    title
+    description
+    startTime
+    endTime
+    place {
+      id
+      name
+      coordinates {
+        latitude
+        longitude
+      }
+      description
+    }
+    images {
+      formats
+    }
+    activeEvent
+  }
+}
+
+query getOneEvent($id: ID!) {
+  event(id: $id) {
+    id
+    title
+    description
+    startTime
+    endTime
+    images {
+      formats
+    }
+    activeEvent
+  }
+}
