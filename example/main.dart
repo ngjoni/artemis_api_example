@@ -21,7 +21,7 @@ void main() async {
   try {
     final GetOnePlace$Query$Place? result =
         await placeService.fetchOnePlace('1');
-    print('LOL: ${result!.name}');
+    print('Result: ${result!.name}');
     print('-----');
     // final input = CreatePlaceInput(
     //     data: PlaceInput(
